@@ -44,6 +44,7 @@ class IntegerTranslator
 
     end
     output = output.strip
+    # check if it -000 so remove ','
     output = output[0..(output.size - 2)] if output[output.size-1] == ','
     output
   end
