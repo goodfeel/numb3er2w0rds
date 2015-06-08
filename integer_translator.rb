@@ -30,7 +30,16 @@ class IntegerTranslator
       if @input < 1000
         output += small_translate(@input)
       else
-        
+        denominator = 1000000000000000
+        THOUSANDS.reverse.each do |e|
+          if denominator >= 1000
+            start = (@input / denominator)
+            small_value = small_translate(start)
+            output +=  small_value + ' ' + e if start > 0 && small_value != ''
+            denominator = denominator/1000
+          end
+        end
+        output += small_translate(@input)
       end
 
     end
