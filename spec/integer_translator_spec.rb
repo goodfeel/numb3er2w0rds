@@ -16,5 +16,21 @@ RSpec.describe IntegerTranslator do
     end
   end
 
-  
+  describe 'CONSTANTS' do
+    it 'should return correct constants' do
+      expect(IntegerTranslator::THOUSANDS.first).to eq('thousand')
+      expect(IntegerTranslator::THOUSANDS[2]).to eq('billion')
+      expect(IntegerTranslator::THOUSANDS.last).to eq('quadrillion')
+
+      expect(IntegerTranslator::NUMBERS.first).to eq('')
+      expect(IntegerTranslator::NUMBERS[6]).to eq('six')
+      expect(IntegerTranslator::NUMBERS.last).to eq('nineteen')
+
+      expect(IntegerTranslator::TENS.first).to eq('')
+      expect(IntegerTranslator::TENS[6]).to eq('sixty')
+      expect(IntegerTranslator::TENS.last).to eq('ninety')
+    end
+  end
+
+
 end
