@@ -43,10 +43,40 @@ RSpec.describe IntegerTranslator do
     context 'negative' do
       it 'should return prefix negative' do
         translator = IntegerTranslator.new(-1)
-        expect(translator.translate).to eq('Negative ')
+        expect(translator.translate).to eq('Negative one')
       end
     end
-  end
 
+    context 'single digit' do
+      it 'should return correct digits' do
+        translator = IntegerTranslator.new(1)
+        expect(translator.translate).to eq('one')
 
+        translator = IntegerTranslator.new(2)
+        expect(translator.translate).to eq('two')
+
+        translator = IntegerTranslator.new(3)
+        expect(translator.translate).to eq('three')
+
+        translator = IntegerTranslator.new(4)
+        expect(translator.translate).to eq('four')
+
+        translator = IntegerTranslator.new(5)
+        expect(translator.translate).to eq('five')
+
+        translator = IntegerTranslator.new(6)
+        expect(translator.translate).to eq('six')
+
+        translator = IntegerTranslator.new(7)
+        expect(translator.translate).to eq('seven')
+
+        translator = IntegerTranslator.new(8)
+        expect(translator.translate).to eq('eight')
+
+        translator = IntegerTranslator.new(9)
+        expect(translator.translate).to eq('nine')
+      end
+    end
+
+  end # context single digit
 end

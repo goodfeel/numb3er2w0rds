@@ -26,7 +26,10 @@ class IntegerTranslator
       # Special case
       output = 'zero'
     else
-      
+
+      right_most = input % 10
+      output = output + NUMBERS[right_most]
+      output
     end
     output
   end
