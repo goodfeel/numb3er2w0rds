@@ -245,40 +245,56 @@ RSpec.describe IntegerTranslator do
         expect(translator.translate).to eq('one hundred thousand')
 
         translator = IntegerTranslator.new(220101)
-        expect(translator.translate).to eq('two hundred and twenty thousand one hundred and one')
+        expect(translator.translate).to eq('two hundred twenty thousand, one hundred and one')
 
         translator = IntegerTranslator.new(10000)
         expect(translator.translate).to eq('ten thousand')
 
         translator = IntegerTranslator.new(22222)
-        expect(translator.translate).to eq('twenty two thousand two hundred and twenty two')
+        expect(translator.translate).to eq('twenty two thousand, two hundred and twenty two')
 
         translator = IntegerTranslator.new(999999)
-        expect(translator.translate).to eq('nine hundred and ninety nine thousand nine hundred and ninety nine')
+        expect(translator.translate).to eq('nine hundred ninety nine thousand, nine hundred and ninety nine')
 
         translator = IntegerTranslator.new(121211)
-        expect(translator.translate).to eq('one hundred and twenty one thousand two hundred and eleven')
+        expect(translator.translate).to eq('one hundred twenty one thousand, two hundred and eleven')
       end
     end # ten / hundred thousands sampling
 
     context 'super large sampling' do
       it 'should return correct digits' do
         translator = IntegerTranslator.new(1000450000)
-        expect(translator.translate).to eq('one billion four hundred and fifthy thousand')
+        expect(translator.translate).to eq('one billion, four hundred fifthy thousand')
 
         translator = IntegerTranslator.new(123456789)
-        expect(translator.translate).to eq('one hundred and twenty three million four hundred and fifthy six thousand seven hundred and eighty nine')
+        expect(translator.translate).to eq('one hundred twenty three million, four hundred fifthy six thousand, seven hundred and eighty nine')
 
         translator = IntegerTranslator.new(1234567890)
-        expect(translator.translate).to eq('one billion two hundred and thirty four million five hundred and sixty seven thousand eight hundred and ninety')
+        expect(translator.translate).to eq('one billion, two hundred thirty four million, five hundred sixty seven thousand, eight hundred and ninety')
 
         translator = IntegerTranslator.new(1234567891234)
-        expect(translator.translate).to eq('one trillion two hundred and thirty four billion five hundred and sixty seven million eight hundred and ninety one thousand two hundred and thirty four')
+        expect(translator.translate).to eq('one trillion, two hundred thirty four billion, five hundred sixty seven million, eight hundred ninety one thousand, two hundred and thirty four')
 
         translator = IntegerTranslator.new(12345678912345678)
-        expect(translator.translate).to eq('twelve quadrillion three hundred and fourty five trillion six hundred and seventy eight billion nine hundred and twelve million three hundred and fourty five thousand six hundred and seventy eight')
+        expect(translator.translate).to eq('twelve quadrillion, three hundred fourty five trillion, six hundred seventy eight billion, nine hundred twelve million, three hundred fourty five thousand, six hundred and seventy eight')
       end
     end # super large sampling
+
+    context 'Negative' do
+      it 'should return correct digits' do
+        translator = IntegerTranslator.new(-100)
+        expect(translator.translate).to eq('Negative one hundred')
+
+        translator = IntegerTranslator.new(-1234567891234)
+        expect(translator.translate).to eq('Negative one trillion, two hundred thirty four billion, five hundred sixty seven million, eight hundred ninety one thousand, two hundred and thirty four')
+
+        translator = IntegerTranslator.new(-4)
+        expect(translator.translate).to eq('Negative four')
+
+        translator = IntegerTranslator.new(-40)
+        expect(translator.translate).to eq('Negative fourty')
+      end
+    end # Negative
 
   end # translate
 end
