@@ -76,7 +76,76 @@ RSpec.describe IntegerTranslator do
         translator = IntegerTranslator.new(9)
         expect(translator.translate).to eq('nine')
       end
-    end
+    end # context single digit
 
-  end # context single digit
+    context 'special 11 12 .. 19' do
+      it 'should return correct digits' do
+        translator = IntegerTranslator.new(10)
+        expect(translator.translate).to eq('ten')
+
+        translator = IntegerTranslator.new(11)
+        expect(translator.translate).to eq('eleven')
+
+        translator = IntegerTranslator.new(12)
+        expect(translator.translate).to eq('twelve')
+
+        translator = IntegerTranslator.new(13)
+        expect(translator.translate).to eq('thirteen')
+
+        translator = IntegerTranslator.new(14)
+        expect(translator.translate).to eq('fourteen')
+
+        translator = IntegerTranslator.new(15)
+        expect(translator.translate).to eq('fifteen')
+
+        translator = IntegerTranslator.new(16)
+        expect(translator.translate).to eq('sixteen')
+
+        translator = IntegerTranslator.new(17)
+        expect(translator.translate).to eq('seventeen')
+
+        translator = IntegerTranslator.new(18)
+        expect(translator.translate).to eq('eighteen')
+
+        translator = IntegerTranslator.new(19)
+        expect(translator.translate).to eq('nineteen')
+
+        translator = IntegerTranslator.new(20)
+        expect(translator.translate).to eq('twenty')
+      end
+    end # context special 11 12 .. 19
+
+    context '10 20 30 40 .. 90' do
+      it 'should return correct digits' do
+        translator = IntegerTranslator.new(10)
+        expect(translator.translate).to eq('ten')
+
+        translator = IntegerTranslator.new(20)
+        expect(translator.translate).to eq('twenty')
+
+        translator = IntegerTranslator.new(30)
+        expect(translator.translate).to eq('thirty')
+
+        translator = IntegerTranslator.new(40)
+        expect(translator.translate).to eq('fourty')
+
+        translator = IntegerTranslator.new(50)
+        expect(translator.translate).to eq('fifthy')
+
+        translator = IntegerTranslator.new(60)
+        expect(translator.translate).to eq('sixty')
+
+        translator = IntegerTranslator.new(70)
+        expect(translator.translate).to eq('seventy')
+
+        translator = IntegerTranslator.new(80)
+        expect(translator.translate).to eq('eighty')
+
+        translator = IntegerTranslator.new(90)
+        expect(translator.translate).to eq('ninety')
+
+      end
+    end # 10 20 30 40 .. 90
+
+  end # translate
 end
