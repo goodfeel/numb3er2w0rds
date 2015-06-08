@@ -261,5 +261,24 @@ RSpec.describe IntegerTranslator do
       end
     end # ten / hundred thousands sampling
 
+    context 'super large sampling' do
+      it 'should return correct digits' do
+        translator = IntegerTranslator.new(1000450000)
+        expect(translator.translate).to eq('one billion four hundred and fifthy thousand')
+
+        translator = IntegerTranslator.new(123456789)
+        expect(translator.translate).to eq('one hundred and twenty three million four hundred and fifthy six thousand seven hundred and eighty nine')
+
+        translator = IntegerTranslator.new(1234567890)
+        expect(translator.translate).to eq('one billion two hundred and thirty four million five hundred and sixty seven thousand eight hundred and ninety')
+
+        translator = IntegerTranslator.new(1234567891234)
+        expect(translator.translate).to eq('one trillion two hundred and thirty four billion five hundred and sixty seven million eight hundred and ninety one thousand two hundred and thirty four')
+
+        translator = IntegerTranslator.new(12345678912345678)
+        expect(translator.translate).to eq('twelve quadrillion three hundred and fourty five trillion six hundred and seventy eight billion nine hundred and twelve million three hundred and fourty five thousand six hundred and seventy eight')
+      end
+    end # super large sampling
+
   end # translate
 end
