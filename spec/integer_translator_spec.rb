@@ -147,5 +147,34 @@ RSpec.describe IntegerTranslator do
       end
     end # 10 20 30 40 .. 90
 
+    context 'sampling in tenth zone' do
+      it 'should return correct digits' do
+        translator = IntegerTranslator.new(21)
+        expect(translator.translate).to eq('twenty one')
+
+        translator = IntegerTranslator.new(32)
+        expect(translator.translate).to eq('thirty two')
+
+        translator = IntegerTranslator.new(43)
+        expect(translator.translate).to eq('fourty three')
+
+        translator = IntegerTranslator.new(54)
+        expect(translator.translate).to eq('fifthy four')
+
+        translator = IntegerTranslator.new(65)
+        expect(translator.translate).to eq('sixty five')
+
+        translator = IntegerTranslator.new(76)
+        expect(translator.translate).to eq('seventy six')
+
+        translator = IntegerTranslator.new(87)
+        expect(translator.translate).to eq('eighty seven')
+
+        translator = IntegerTranslator.new(98)
+        expect(translator.translate).to eq('ninety eight')
+
+      end
+    end #sampling in tenth zone
+
   end # translate
 end

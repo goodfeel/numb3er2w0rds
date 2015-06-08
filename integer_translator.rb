@@ -31,7 +31,7 @@ class IntegerTranslator
 
       output = output + NUMBERS[k_ten * 10 + right_most] if k_ten < 2
       output += TENS[k_ten] if k_ten > 1
-      output += NUMBERS[right_most] if k_ten >= 2 && right_most != 0
+      output += ' ' +NUMBERS[right_most] if k_ten >= 2 && right_most != 0
     end
     output
   end
