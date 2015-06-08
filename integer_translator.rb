@@ -35,7 +35,7 @@ class IntegerTranslator
           if denominator >= 1000
             start = (@input / denominator)
             small_value = small_translate(start)
-            output +=  small_value + ' ' + e if start > 0 && small_value != ''
+            output +=  small_value + ' ' + e + ' ' if start > 0 && small_value != ''
             denominator = denominator/1000
           end
         end
@@ -43,7 +43,7 @@ class IntegerTranslator
       end
 
     end
-    output
+    output.strip
   end
 
   def small_translate(input)
