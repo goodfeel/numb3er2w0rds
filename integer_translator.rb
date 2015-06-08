@@ -26,7 +26,7 @@ class IntegerTranslator
       # Special case
       output = 'zero'
     else
-
+      
     end
     output
   end
