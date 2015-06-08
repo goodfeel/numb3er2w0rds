@@ -27,7 +27,12 @@ class IntegerTranslator
       output = 'zero'
     else
 
-      output += small_translate(input)
+      if @input < 1000
+        output += small_translate(@input)
+      else
+        
+      end
+
     end
     output
   end
