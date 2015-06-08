@@ -14,5 +14,22 @@ class IntegerTranslator
     @input = input
   end
 
+  def translate
+    output = ''
+
+    # Negated
+    if @input < 0
+      output += 'Negative '
+      @input = @input.abs
+    end
+    if @input.zero?
+      # Special case
+      output = 'zero'
+    else
+
+    end
+    output
+  end
+
 
 end

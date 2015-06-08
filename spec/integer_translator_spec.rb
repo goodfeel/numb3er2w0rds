@@ -32,5 +32,21 @@ RSpec.describe IntegerTranslator do
     end
   end
 
+  describe '#translate' do
+    context 'zero' do
+      it 'should return string zero' do
+        translator = IntegerTranslator.new(0)
+        expect(translator.translate).to eq('zero')
+      end
+    end
+
+    context 'negative' do
+      it 'should return prefix negative' do
+        translator = IntegerTranslator.new(-1)
+        expect(translator.translate).to eq('Negative ')
+      end
+    end
+  end
+
 
 end
