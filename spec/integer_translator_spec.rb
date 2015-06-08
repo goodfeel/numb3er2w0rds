@@ -206,7 +206,38 @@ RSpec.describe IntegerTranslator do
         expect(translator.translate).to eq('nine hundred')
       end
     end # 100 200 .. 900
-    
+
+
+    context 'hunreds sampling' do
+      it 'should return correct digits' do
+        translator = IntegerTranslator.new(101)
+        expect(translator.translate).to eq('one hundred and one')
+
+        translator = IntegerTranslator.new(212)
+        expect(translator.translate).to eq('two hundred and twelve')
+
+        translator = IntegerTranslator.new(354)
+        expect(translator.translate).to eq('three hundred and fifthy four')
+
+        translator = IntegerTranslator.new(459)
+        expect(translator.translate).to eq('four hundred and fifthy nine')
+
+        translator = IntegerTranslator.new(578)
+        expect(translator.translate).to eq('five hundred and seventy eight')
+
+        translator = IntegerTranslator.new(638)
+        expect(translator.translate).to eq('six hundred and thirty eight')
+
+        translator = IntegerTranslator.new(782)
+        expect(translator.translate).to eq('seven hundred and eighty two')
+
+        translator = IntegerTranslator.new(839)
+        expect(translator.translate).to eq('eight hundred and thirty nine')
+
+        translator = IntegerTranslator.new(918)
+        expect(translator.translate).to eq('nine hundred and eighteen')
+      end
+    end # hunreds sampling
 
   end # translate
 end
