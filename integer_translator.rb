@@ -26,16 +26,24 @@ class IntegerTranslator
       # Special case
       output = 'zero'
     else
-      k_hundred = ((input%1000) / 100)
-      k_ten = ((input % 100) / 10)
-      right_most = input % 10
 
-      output += NUMBERS[k_hundred] + ' hundred' if k_hundred != 0
-      output += ' and ' if k_hundred != 0 && (k_ten != 0 || right_most != 0)
-      output = output + NUMBERS[k_ten * 10 + right_most] if k_ten < 2
-      output += TENS[k_ten] if k_ten > 1
-      output += ' ' +NUMBERS[right_most] if k_ten >= 2 && right_most != 0
+      output += small_translate(input)
     end
+    output
+  end
+
+  def small_translate(input)
+    output = ''
+    k_hundred = ((input%1000) / 100)
+    k_ten = ((input % 100) / 10)
+    right_most = input % 10
+
+    output += NUMBERS[k_hundred] + ' hundred' if k_hundred != 0
+    output += ' and ' if k_hundred != 0 && (k_ten != 0 || right_most != 0)
+    output = output + NUMBERS[k_ten * 10 + right_most] if k_ten < 2
+    output += TENS[k_ten] if k_ten > 1
+    output += ' ' +NUMBERS[right_most] if k_ten >= 2 && right_most != 0
+
     output
   end
 
