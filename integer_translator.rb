@@ -22,27 +22,25 @@ class IntegerTranslator
       output += 'Negative '
       @input = @input.abs
     end
-    if @input.zero?
-      # Special case
+
+    case
+    when  @input.zero?
       output = 'zero'
+    when @input < 1000
+      output += small_translate(@input)
     else
-
-      if @input < 1000
-        output += small_translate(@input)
-      else
-        denominator = 1000000000000000
-        THOUSANDS.reverse.each do |e|
-          if denominator >= 1000
-            start = (@input / denominator)
-            small_value = small_translate(start, false)
-            output +=  small_value + ' ' + e + ', ' if start > 0 && small_value != ''
-            denominator = denominator/1000
-          end
+      denominator = 1000000000000000
+      THOUSANDS.reverse.each do |e|
+        if denominator >= 1000
+          start = (@input / denominator)
+          small_value = small_translate(start, false)
+          output +=  small_value + ' ' + e + ', ' if start > 0 && small_value != ''
+          denominator = denominator/1000
         end
-        output += small_translate(@input)
       end
-
+      output += small_translate(@input)
     end
+
     output = output.strip
     # check if it -000 so remove ','
     output = output[0..(output.size - 2)] if output[output.size-1] == ','
